@@ -17,9 +17,16 @@ HEXADECIMAL_NUMS = {
 
 def converter_3000():
     number = input("Enter your number (\"number\"x\"base\"): ")
+    for let in number.split("x")[0]:
+        if int(let) >= int(number.split("x")[1]):
+            print("Wrong input")
+            return False
     base = input("Enter translate base (2 - 16): ")
     if not base.isdecimal() or int(base) not in range(2, 17):
-        return "Wrong input"
+        print("Wrong input")
+        return False
+
+
     print(convert_to_dif_base(convert_to_dec(number), int(base)), end="\n\n")
 
 def convert_to_dec(string_num: str):
