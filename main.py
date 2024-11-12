@@ -22,11 +22,14 @@ def converter_3000():
         if temp_num >= int(number.split("x")[1]):
             print("Wrong input")
             return False
-    base = input("Enter translate base (2 - 16): ")
-    if not base.isdecimal() or int(base) not in range(2, 17):
+    base = input("Enter translate base (1 - 16): ")
+    if not base.isdecimal() or int(base) not in range(1, 17):
         print("Wrong input")
         return False
-    print(convert_to_dif_base(convert_to_dec(number), int(base)), end="\n\n")
+    if int(base) != 1:
+        print(convert_to_dif_base(convert_to_dec(number), int(base)), end="\n\n")
+    else:
+        print("|"*convert_to_dec(number))
 
 def convert_to_dec(string_num: str):
     inp, inp_base = string_num.split("x")
@@ -50,5 +53,5 @@ def convert_to_dif_base(dec_num: int, inp_base: int):
 
 while True:
     converter_3000()
-    if input("Do you want to continue?: ").lower() != "yes":
+    if input("Do you want to try again?: ").lower() != "yes":
         break
